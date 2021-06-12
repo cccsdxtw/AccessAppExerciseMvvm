@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        itemViewer = this.findViewById(R.id.itemViewer)
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.mainViewMoedl = viewModel
+        viewModel.getAllUserForAPI()
         viewModel.getDefault()
 
     }
