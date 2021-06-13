@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <!--这里沿用双向绑定的userbean-->
+        <import type="com.example.accessappexercisemvvm.viewmider.UserViewModel" />
+
+        <variable
+            name="user"
+            type="UserViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/userItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_margin">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:scaleType="centerCrop"
+             />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="50dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_font"
+                android:textStyle="bold"
+                android:text="@{user.login}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtReserved"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_font"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

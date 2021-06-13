@@ -1,6 +1,8 @@
-package com.example.githubusers.Model.Data
+package com.example.accessappexercisemvvm.model.Data
 
- class User() {
+import androidx.lifecycle.ViewModel
+
+class User {
      data class Response(
          val login:String,
          val id:Int,
