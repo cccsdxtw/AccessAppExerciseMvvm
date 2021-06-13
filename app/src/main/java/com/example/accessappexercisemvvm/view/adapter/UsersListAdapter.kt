@@ -13,6 +13,7 @@ import com.example.accessappexercisemvvm.R
 import com.example.accessappexercisemvvm.databinding.ListUserBinding
 import com.example.accessappexercisemvvm.viewmider.UsersViewModel
 import com.example.githubusers.Model.Data.Users
+import com.example.githubusers.Model.Uill.CircleTransform
 import com.squareup.picasso.Picasso
 
 
@@ -78,6 +79,7 @@ class UsersListAdapter : BaseAdapter() {
             .load(mAllUser!![position].avatar_url)
             .placeholder(R.drawable.refresh)
             .error(R.drawable.xx)
+            .transform(CircleTransform())
             .into(imgView)
 
         ListUserBinding.userItem.setOnClickListener(View.OnClickListener {
