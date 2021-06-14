@@ -85,7 +85,26 @@ class OneUserActivity : AppCompatActivity() {
 
 
                     binding.oneUserViewModel = viewModel
-                    viewModel.setAll(item.name, item.login, item.location, item.blog,item.avatar_url)
+                    var name :String=""
+                    var login :String=""
+                    var location :String=""
+                    var blog :String=""
+                    var avatar_url :String=""
+
+                    if(item.name!=null){
+                        name=item.name }
+                    if(item.login!=null){
+                        login=item.login }
+                    if(item.location!=null){
+                        location=item.location }
+                    if(item.blog!=null){
+                        blog=item.blog }
+                    if(item.avatar_url!=null){
+                        avatar_url=item.avatar_url }
+
+
+
+                    viewModel.setAll(name,login,location,blog,avatar_url)
 //                    viewModel.urlImage.set(item.avatar_url)
 //                    viewModel.loadImage(mimgAvatar, item.avatar_url)
                 }
