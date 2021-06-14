@@ -1,34 +1,59 @@
 package com.example.accessappexercisemvvm.viewmider
 
+
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
-import com.example.githubusers.Model.Data.Users
+import com.example.accessappexercisemvvm.R
+import com.squareup.picasso.Picasso
 
 
 class OneUserViewModel : ViewModel() {
 
-    var productName: ObservableField<String> = ObservableField("")
-    var productUsers: ObservableField<Array<Users.Response>> = ObservableField()
+    var name: ObservableField<String> = ObservableField("")
+    var login: ObservableField<String> = ObservableField("")
+    var location: ObservableField<String> = ObservableField("")
+    var blog: ObservableField<String> = ObservableField("")
+    var imageUrl: ObservableField<String> = ObservableField( "")
+//    var urlImage: ObservableField<String> = ObservableField("")
 
 
-    fun getAllUserForAPI() : Array<Users.Response>? {
-        return productUsers.get()
+    fun setAll(mName: String, mLogin: String, mLocation: String, mBlog: String, mUrlImage: String) {
+        name.set(mName)
+        login.set(mLogin)
+        location.set(mLocation)
+        blog.set(mBlog)
+        imageUrl.set(mUrlImage)
     }
 
-    fun getDefault() {
-        productName.set("Users")
+
+
+    companion object {
+        @JvmStatic
+        @BindingAdapter("bind:imageUrl")
+        fun loadImage(view: ImageView, imageUrl: String?) {
+            if(imageUrl==""){
+                Picasso.get()
+                    .load(R.drawable.refresh)
+                    .placeholder(R.drawable.refresh)
+                    .error(R.drawable.xx)
+                    .into(view)
+            }else{
+                Picasso.get()
+                    .load(imageUrl)
+                    .placeholder(R.drawable.refresh)
+                    .error(R.drawable.xx)
+                    .into(view)
+            }
+
+
+        }
     }
 
-
-
-    fun getProduct(productId: String) {
-        productName.set(productId)
-    }
-
-    fun getUser(): String {
-        return "e04"
-    }
 }
+
+
 
 
 

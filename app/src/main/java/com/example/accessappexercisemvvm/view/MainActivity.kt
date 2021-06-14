@@ -33,22 +33,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
          itemViewer = findViewById(R.id.itemViewer)
-         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-         binding  = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-
-//        ListUserBinding = DataBindingUtil.setContentView(this, R.layout.list_user);
-        //初始化一个listview的adapter
-//        var UsersListAdapter = UsersListAdapter()
-        //绑定adapter
-//        itemViewer.setAdapter(UsersListAdapter)
-        //通知adapter刷新数据
-//        UsersListAdapter.notifyDataSetChanged();
-
-        binding.mainViewMoedl = viewModel
-        viewModel.getAllUserForAPI()
-        viewModel.getDefault()
+//        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+//        binding  = DataBindingUtil.setContentView(this, R.layout.activity_main)
         getAllUserForAPI()
+
+
+
 
 
 
@@ -94,6 +84,21 @@ class MainActivity : AppCompatActivity() {
             mListAdapter.UsersListAdapter(this, this, itemList)
             name.setAdapter(mListAdapter)
             mListAdapter.notifyDataSetChanged()
+
+
+
+
+//        ListUserBinding = DataBindingUtil.setContentView(this, R.layout.list_user);
+////            初始化一个listview的adapter
+//        var UsersListAdapter = UsersListAdapter()
+////            绑定adapter
+//        itemViewer.setAdapter(UsersListAdapter)
+////            通知adapter刷新数据
+//        UsersListAdapter.notifyDataSetChanged();
+
+//            binding.mainViewMoedl = viewModel
+//        viewModel.getAllUserForAPI()
+//            viewModel.getDefault()
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.example.githubusers.Model.Data
 
 
-class Users() {
+class Users {
      data class Response(
          val login:String,
          val id:Int,
