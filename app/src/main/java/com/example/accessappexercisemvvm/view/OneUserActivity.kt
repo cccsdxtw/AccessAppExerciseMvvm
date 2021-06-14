@@ -1,6 +1,6 @@
 package com.example.accessappexercisemvvm.view
 
-import android.app.Activity
+
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -11,13 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.accessappexercisemvvm.R
 import com.example.accessappexercisemvvm.databinding.ActivityOneuserBinding
 import com.example.accessappexercisemvvm.model.Data.User
-import com.example.accessappexercisemvvm.viewmider.MainViewModel
 import com.example.accessappexercisemvvm.viewmider.OneUserViewModel
-import com.example.githubusers.Model.Uill.CircleTransform
-
-
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
 import okhttp3.*
 import java.io.IOException
 
@@ -50,7 +45,10 @@ class OneUserActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(OneUserViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_oneuser)
-
+        binding.oneUserViewModel = viewModel
+        binding.oneUserViewModel!!.clickListener.set(View.OnClickListener() {
+            onBackPressed()
+        })
 
     }
 
@@ -84,27 +82,33 @@ class OneUserActivity : AppCompatActivity() {
 //                    mTextViewlink.text =item.blog
 
 
-                    binding.oneUserViewModel = viewModel
-                    var name :String=""
-                    var login :String=""
-                    var location :String=""
-                    var blog :String=""
-                    var avatar_url :String=""
 
-                    if(item.name!=null){
-                        name=item.name }
-                    if(item.login!=null){
-                        login=item.login }
-                    if(item.location!=null){
-                        location=item.location }
-                    if(item.blog!=null){
-                        blog=item.blog }
-                    if(item.avatar_url!=null){
-                        avatar_url=item.avatar_url }
+                    var name: String = ""
+                    var login: String = ""
+                    var location: String = ""
+                    var blog: String = ""
+                    var avatar_url: String = ""
+
+                    if (item.name != null) {
+                        name = item.name
+                    }
+                    if (item.login != null) {
+                        login = item.login
+                    }
+                    if (item.location != null) {
+                        location = item.location
+                    }
+                    if (item.blog != null) {
+                        blog = item.blog
+                    }
+                    if (item.avatar_url != null) {
+                        avatar_url = item.avatar_url
+                    }
 
 
 
-                    viewModel.setAll(name,login,location,blog,avatar_url)
+
+                    viewModel.setAll(name, login, location, blog, avatar_url)
 //                    viewModel.urlImage.set(item.avatar_url)
 //                    viewModel.loadImage(mimgAvatar, item.avatar_url)
                 }

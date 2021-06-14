@@ -50,6 +50,7 @@
                         android:layout_height="30dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/xx"
+                        android:onClick="@{oneUserViewModel.clickListener}"
                         tools:ignore="ContentDescription" />
 
                     <ImageView
