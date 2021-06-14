@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!--这里沿用双向绑定的userbean-->
-        <import type="com.example.accessappexercisemvvm.viewmider.UserViewModel" />
-
         <variable
-            name="user"
-            type="UserViewModel" />
-
+            name="mainViewMoedl"
+            type="com.example.accessappexercisemvvm.viewmider.MainViewModel" />
     </data>
 
     <LinearLayout
@@ -25,6 +22,7 @@
             android:layout_width="@dimen/avatar_size"
             android:layout_height="@dimen/avatar_size"
             android:scaleType="centerCrop"
+            app:imageUrl="@{mainViewMoedl.imageUrl}"
              />
 
         <LinearLayout
@@ -42,7 +40,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/large_font"
                 android:textStyle="bold"
-                android:text="@{user.login}"/>
+                android:text="@{mainViewMoedl.productList}"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtReserved"

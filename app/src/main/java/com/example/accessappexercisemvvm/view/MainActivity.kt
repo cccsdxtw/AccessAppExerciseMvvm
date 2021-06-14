@@ -32,14 +32,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-         itemViewer = findViewById(R.id.itemViewer)
-//        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-//        binding  = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        itemViewer = findViewById(R.id.itemViewer)
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         getAllUserForAPI()
-
-
-
-
 
 
     }
@@ -71,6 +68,8 @@ class MainActivity : AppCompatActivity() {
                 Log.d("GetAllUserForAPI::", "users:" + users)
                 Log.d("GetAllUserForAPI::", "users:" + users[1].login)
                 changeList(itemViewer, users)
+
+
             }
         })
 
@@ -80,12 +79,21 @@ class MainActivity : AppCompatActivity() {
     private fun changeList(name: ListView, itemList: Array<Users.Response>) {
         runOnUiThread {
             // Stuff that updates the UI
-            val mListAdapter: UsersListAdapter = UsersListAdapter()
-            mListAdapter.UsersListAdapter(this, this, itemList)
-            name.setAdapter(mListAdapter)
-            mListAdapter.notifyDataSetChanged()
+//            val mListAdapter: UsersListAdapter = UsersListAdapter()
+//            mListAdapter.UsersListAdapter(this, this, itemList)
+//            name.setAdapter(mListAdapter)
+//            mListAdapter.notifyDataSetChanged()
 
+            binding.mainViewMoedl = viewModel
+            viewModel.productName.set("Users")
 
+            //初始化一个listview的adapter
+            val listViewAdapter: UsersListAdapter = UsersListAdapter()
+            listViewAdapter.UsersListAdapter(this, this, itemList)
+            //绑定adapter
+            binding.setAdapter(listViewAdapter);
+            //通知adapter刷新数据
+            listViewAdapter.notifyDataSetChanged();
 
 
 //        ListUserBinding = DataBindingUtil.setContentView(this, R.layout.list_user);

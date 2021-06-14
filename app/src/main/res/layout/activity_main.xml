@@ -5,14 +5,14 @@
 
 
     <data>
-          <variable
+
+        <variable
             name="mainViewMoedl"
             type="com.example.accessappexercisemvvm.viewmider.MainViewModel" />
-        <import type="com.example.accessappexercisemvvm.view.adapter.UsersListAdapter" />
+
         <variable
             name="adapter"
-            type="UsersListAdapter" />
-
+            type="com.example.accessappexercisemvvm.view.adapter.UsersListAdapter" />
 
     </data>
 
@@ -44,7 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/small_margin"
-                android:divider="@null" />
+                android:divider="@null"
+                app:adapter="@{adapter}" />
 
         </LinearLayout>
 
